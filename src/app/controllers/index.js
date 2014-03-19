@@ -11,7 +11,7 @@ ngApp.controller('IndexCtrl', ['$scope', '$firebase', '$firebaseSimpleLogin', '$
     $scope.auth.$login('github', {}).then(function(user) {
       $scope.user = user;
 
-      $http.get('data.json')
+      $http.post('http://162.243.175.101:3000/languages')
         .success(function(data, status) {
           $scope.languages = data.languages;
         })
