@@ -35837,7 +35837,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
     $scope.auth.$login('github', {}).then(function(user) {
       $scope.user = user;
 
-      $http.post('http://162.243.175.101:3000/languages')
+      $http.post('http://162.243.175.101/languages', {'username': $scope.user.username})
         .success(function(data, status) {
           $scope.languages = data.languages;
         })

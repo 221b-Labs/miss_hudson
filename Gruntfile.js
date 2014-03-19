@@ -106,4 +106,9 @@ module.exports = function(grunt) {
                                     'cssmin:dist',
                                     'connect:server',
                                     'watch']);
+																		
+	grunt.task.registerTask('build', ['concat:dist',
+                                    'uglify:dist',
+                                    'less:dist',
+                                    'cssmin:dist']);
 };
