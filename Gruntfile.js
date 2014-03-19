@@ -6,9 +6,13 @@ module.exports = function(grunt) {
     dist: {
       src: [
         './src/vendor/jquery/dist/jquery.js',
+        './src/vendor/underscore/underscore.js',
         './src/vendor/bootstrap/dist/js/bootstrap.js',
         './src/vendor/angular/angular.js',
+        './src/vendor/firebase/firebase.js',
+        './src/vendor/firebase-simple-login/firebase-simple-login.js',
         './src/vendor/angular-route/angular-route.js',
+        './src/vendor/angularfire/angularfire.js',
         './src/app/main.js',
         './src/app/controllers/index.js'
       ],
@@ -28,7 +32,7 @@ module.exports = function(grunt) {
     scripts: {
       files: ['./src/app/**/*.js', './src/app/**/*.less'],
       tasks: [
-        'jshint:all',
+        // 'jshint:all',
         'concat:dist',
         'uglify:dist',
         'less:dist',
@@ -95,7 +99,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  grunt.task.registerTask('start', ['jshint:all',
+  grunt.task.registerTask('start', [//'jshint:all',
                                     'concat:dist',
                                     'uglify:dist',
                                     'less:dist',
