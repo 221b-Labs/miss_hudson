@@ -1,4 +1,4 @@
-ngApp.controller('IndexCtrl', ['$scope', '$firebase', '$firebaseSimpleLogin', '$http', function($scope, $firebase, $firebaseSimpleLogin, $http) {
+ngApp.controller('IndexCtrl', ['$scope', '$firebase', '$firebaseSimpleLogin', '$http', '$modal', function($scope, $firebase, $firebaseSimpleLogin, $http, $modal) {
   var db = new Firebase('https://glaring-fire-8324.firebaseio.com/users');
 
   $scope.users = $firebase(db);
@@ -12,6 +12,7 @@ ngApp.controller('IndexCtrl', ['$scope', '$firebase', '$firebaseSimpleLogin', '$
       $scope.user = user;
 
       $http.post('http://162.243.175.101/languages', {'username': $scope.user.username})
+      //$http.get('data.json')
         .success(function(data, status) {
           $scope.languages = data.languages;
         })
@@ -44,6 +45,34 @@ ngApp.controller('IndexCtrl', ['$scope', '$firebase', '$firebaseSimpleLogin', '$
 
     if (exists.length <= 0) {
       $scope.users.$add({'provider': $scope.user.provider, 'uid': $scope.user.uid, 'name': $scope.user.name, 'email': $scope.user.email, 'languages': $scope.selectedLanguages});
+
+      $modal.open({
+        template: '<div class="modal-header">
+          <button type="button" class="close" ng-click="$close()" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Congratulations!</h4>
+        </div>
+        <div class="modal-body">
+          Successfully Saved!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="$close()">Close</button>
+        </div>',
+        controller: 'IndexCtrl',
+      });
+    } else {
+      $modal.open({
+        template: '<div class="modal-header">
+          <button type="button" class="close" ng-click="$close()" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Notice!</h4>
+        </div>
+        <div class="modal-body">
+          You\'ve already signed up!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="$close()">Close</button>
+        </div>',
+        controller: 'IndexCtrl',
+      });
     }
   };
   // , {"key": user.accessToken, "name": user.name}
