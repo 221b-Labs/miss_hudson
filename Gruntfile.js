@@ -12,9 +12,12 @@ module.exports = function(grunt) {
         './src/vendor/firebase/firebase.js',
         './src/vendor/firebase-simple-login/firebase-simple-login.js',
         './src/vendor/angular-route/angular-route.js',
+        './src/vendor/angular-bootstrap/ui-bootstrap.js',
+        './src/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
         './src/vendor/angularfire/angularfire.js',
         './src/app/main.js',
-        './src/app/controllers/index.js'
+        './src/app/controllers/index.js',
+        './src/app/controllers/modal.js'
       ],
       dest: './app/javascripts/app.js'
     }
@@ -30,7 +33,7 @@ module.exports = function(grunt) {
 
   var watchConfig = {
     scripts: {
-      files: ['./src/app/**/*.js', './src/app/**/*.less'],
+      files: ['Gruntfile.js', './src/app/**/*.js', './src/app/**/*.less'],
       tasks: [
         // 'jshint:all',
         'concat:dist',

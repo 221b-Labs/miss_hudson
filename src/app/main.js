@@ -1,4 +1,4 @@
-var ngApp = angular.module('ngApp', ['ngRoute', 'firebase'])
+var ngApp = angular.module('ngApp', ['ngRoute', 'firebase', 'ui.bootstrap'])
   .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
